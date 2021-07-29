@@ -24,7 +24,7 @@ int main()
        {
            for(int j=n;j>=1;j--)
            {
-               if((arr[i]-arr[j])==k)
+               if((arr[i]-arr[j])==k || arr[j] - arr[i] == k)
                {
                    count++;
                }
