@@ -1,5 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+int count(int arr[],int n,int k)
+{
+    int high = 0;
+    int low = 0;
+    int count = 0;
+
+    sort(arr,arr+n);
+
+    while(high<n)
+    {
+        if(arr[high]-arr[low]==k)
+        {
+            low++; high++;
+            count++;
+        }
+
+        else if(arr[high]-arr[low]>k)
+        {
+            low++;
+        }
+        else
+        {
+            high++;
+        }
+    }
+    return count;
+}
+
+
 int main()
 {
     int t;
@@ -10,27 +40,15 @@ int main()
         int n;
         cin>>n;
 
-        int arr[n];
-
-        for(int i=1;i<=n;i++)
+        int arr[n],k;
+        for(int i=0;i<n;i++)
         {
             cin>>arr[i];
         }
 
-        int k,count=0;
         cin>>k;
 
-       for(int i=1;i<=n;i++)
-       {
-           for(int j=n;j>=1;j--)
-           {
-               if((arr[i]-arr[j])==k || arr[j] - arr[i] == k)
-               {
-                   count++;
-               }
-           }
-       }
-       cout<<count<<endl;
-        
+        int res = count(arr,n,k);
+        cout<<res<<endl;
     }
 }
